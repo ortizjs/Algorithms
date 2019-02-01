@@ -45,29 +45,25 @@ var isValidrec = function(s){
 
 var isValid = function (s) {
     if (s.length === 0) {
-        return true;
-    }
-    let keys = { '(': ')', '{': '}', '[': ']' };
-    let open = [];
+        return true
+    };
+    let parans = { "(": ")", "[": "]", "{": "}" };
+    let leftOpen = [];
     for (let i = 0; i < s.length; i++) {
         let char = s[i];
-        if (keys[char] === undefined && open.length === []) {
-            return false;
-        }
-        if (keys[char]) {
-            open.push(char)
+        if (parans[char] !== undefined) {
+            leftOpen.push(char);
         } else {
-            let currentOpen = open.pop()
-            if (keys[currentOpen] !== char) {
+            let currentOpen = leftOpen.pop();
+            if (parans[currentOpen] !== char) {
                 return false;
             }
         }
     }
-    if (open.length === 0) {
+    if (leftOpen.length !== 0) {
         return false;
-    } else {
-        return true;
     }
+    return true;
 };
 
 isValid("()[]{}");
