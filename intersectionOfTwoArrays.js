@@ -25,3 +25,15 @@ var intersection = function (nums1, nums2) {
 
 };
 
+
+var intersection = function (nums1, nums2) {
+    let result = [];
+    let i = 0;
+    while (i < nums1.length) {
+        if (nums2.includes(nums1[i]) && !result.includes(nums1[i])) {
+            result.push(nums1[i]);
+        }
+        i++;
+    }
+    return result;
+};
