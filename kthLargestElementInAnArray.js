@@ -12,7 +12,7 @@ Note:
 You may assume k is always valid, 1 ≤ k ≤ array's length.*/
 
 var findKthLargest = function (nums, k) {
-
+    let k;
 };
 
 
