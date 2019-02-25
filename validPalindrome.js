@@ -83,7 +83,7 @@ var isPalindrome = function (s) {
     let str1 = "";
     let str2 = "";
     let i = 0;
-    s = s.toLowerCase()
+    s = s.toLowerCase();
     while (i < s.length) {
         if (s[i].match(/^[a-z0-9]+$/i)) {
             str1 += s[i];
