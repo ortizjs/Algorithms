@@ -9,6 +9,7 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
+
 var reverseList = function (head) {
     if (!head) {
         return null
@@ -18,7 +19,7 @@ var reverseList = function (head) {
 
     while (node !== null) {
         nodes.push(node);
-        node = node.next
+        node = node.next;
     }
 
     let first = nodes[nodes.length - 1]
