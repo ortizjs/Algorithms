@@ -45,8 +45,8 @@ var isValidrec = function(s){
 
 var isValid = function (s) {
     if (s.length === 0) {
-        return true
-    };
+        return true;
+    }
     let parans = { "(": ")", "[": "]", "{": "}" };
     let leftOpen = [];
     for (let i = 0; i < s.length; i++) {
@@ -67,3 +67,6 @@ var isValid = function (s) {
 };
 
 isValid("()[]{}");
+
+
+
