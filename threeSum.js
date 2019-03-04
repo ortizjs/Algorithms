@@ -39,8 +39,37 @@ A solution set is:
 
 
 var threeSum = function (nums) {
-  let results = [];
+  let result = [];
+  let sorted = nums.sort((a, b) => a - b);
+  let isZero = function (num) {
+    return num === 0
+  }
 
+  if (nums.length < 3) return [];
+  if (sorted.every(isZero)) return [sorted]
+  let currentSum = 0;
+  for (let i = 0; i < sorted.length; i++) {
+    let j = 1;
+    let k = sorted.length - 1;
+    let current = sorted[i];
+    while ((i <= j) && ((j < sorted.length && k >= 0) && (sorted[j] < sorted[k]))) {
+      let leftPointer = sorted[j];
+      let rightPointer = sorted[k];
+      currentSum = current + leftPointer + rightPointer
+      if (currentSum === 0) {
+        result.push([current, leftPointer, rightPointer]);
+        j++;
+        k--;
+      } else if (currentSum < 0) {
+        j++;
+      } else if (currentSum > 0) {
+        k--;
+        // } else if (leftPointer > rightPointer || leftPointer === rightPointer){
+        //   i++;
+      }
+    }
+  }
+  return result;
 };
 
 threeSum([-1, 0, 1, 2, -1, -4]);
