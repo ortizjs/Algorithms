@@ -38,34 +38,56 @@ A solution set is:
 // };
 
 
+// var threeSum = function (nums) {
+//   let result = [];
+//   let sorted = nums.sort((a, b) => a - b);
+//   let isZero = function (num) {
+//     return num === 0
+//   }
+
+//   if (nums.length < 3) return [];
+//   if (sorted.every(isZero)) return [sorted]
+//   let currentSum = 0;
+//   for (let i = 0; i < sorted.length; i++) {
+//     let j = 1;
+//     let k = sorted.length - 1;
+//     let current = sorted[i];
+//     while ((i <= j) && ((j < sorted.length && k >= 0) && (sorted[j] < sorted[k]))) {
+//       let leftPointer = sorted[j];
+//       let rightPointer = sorted[k];
+//       currentSum = current + leftPointer + rightPointer
+//       if (currentSum === 0) {
+//         result.push([current, leftPointer, rightPointer]);
+//         j++;
+//         k--;
+//       } else if (currentSum < 0) {
+//         j++;
+//       } else if (currentSum > 0) {
+//         k--;
+//         // } else if (leftPointer > rightPointer || leftPointer === rightPointer){
+//         //   i++;
+//       }
+//     }
+//   }
+//   return result;
+// };
+
 var threeSum = function (nums) {
   let result = [];
   let sorted = nums.sort((a, b) => a - b);
-  let isZero = function (num) {
-    return num === 0
-  }
-
-  if (nums.length < 3) return [];
-  if (sorted.every(isZero)) return [sorted]
-  let currentSum = 0;
-  for (let i = 0; i < sorted.length; i++) {
-    let j = 1;
-    let k = sorted.length - 1;
-    let current = sorted[i];
-    while ((i <= j) && ((j < sorted.length && k >= 0) && (sorted[j] < sorted[k]))) {
-      let leftPointer = sorted[j];
-      let rightPointer = sorted[k];
-      currentSum = current + leftPointer + rightPointer
+  for (let i = 0; i < sorted.length - 2; i++) {
+    let left = i + 1;
+    let right = sorted.length - 1;
+    while (left < right) {
+      let currentSum = sorted[i] + sorted[left] + sorted[right];
       if (currentSum === 0) {
-        result.push([current, leftPointer, rightPointer]);
-        j++;
-        k--;
+        result.push([sorted[i], sorted[left], sorted[right]]);
+        left++;
+        right++;
       } else if (currentSum < 0) {
-        j++;
+        left++;
       } else if (currentSum > 0) {
-        k--;
-        // } else if (leftPointer > rightPointer || leftPointer === rightPointer){
-        //   i++;
+        right++;
       }
     }
   }
