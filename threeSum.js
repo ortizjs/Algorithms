@@ -72,10 +72,33 @@ A solution set is:
 //   return result;
 // };
 
+// var threeSum = function (nums) {
+//   let result = [];
+//   let sorted = nums.sort((a, b) => a - b);
+//   for (let i = 0; i < sorted.length - 2; i++) {
+//     let left = i + 1;
+//     let right = sorted.length - 1;
+//     while (left < right) {
+//       let currentSum = sorted[i] + sorted[left] + sorted[right];
+//       if (currentSum === 0) {
+//         result.push([sorted[i], sorted[left], sorted[right]]);
+//         left++;
+//         right++;
+//       } else if (currentSum < 0) {
+//         left++;
+//       } else if (currentSum > 0) {
+//         right++;
+//       }
+//     }
+//   }
+//   return result;
+// };
+
 var threeSum = function (nums) {
   let result = [];
   let sorted = nums.sort((a, b) => a - b);
-  for (let i = 0; i < sorted.length - 2; i++) {
+  for (let i = 0; i < sorted.length; i++) {
+    while (sorted[i] === sorted[i - 1]) i++
     let left = i + 1;
     let right = sorted.length - 1;
     while (left < right) {
@@ -83,11 +106,13 @@ var threeSum = function (nums) {
       if (currentSum === 0) {
         result.push([sorted[i], sorted[left], sorted[right]]);
         left++;
-        right++;
+        right--;
+        while (sorted[left] === sorted[left - 1]) left++;
+        while (sorted[right] === sorted[right + 1]) right--;
       } else if (currentSum < 0) {
         left++;
       } else if (currentSum > 0) {
-        right++;
+        right--;
       }
     }
   }
