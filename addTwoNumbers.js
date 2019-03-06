@@ -10,6 +10,37 @@
 // Output: 7 - > 0 - > 8
 // Explanation: 342 + 465 = 807.
 
+
+// var nodeToInt = function (node) {
+//     let currentNode = node;
+//     let s = "";
+//     while (currentNode) {
+//         s = currentNode.val + s;
+//         if (currentNode.next !== null) {
+//             currentNode = currentNode.next;
+//         } else {
+//             break;
+//         }
+//     }
+//     return parseInt(s);
+// }
+// var addTwoNumbers = function (l1, l2) {
+//     let n1 = nodeToInt(l1);
+//     let n2 = nodeToInt(l2);
+//     let n3 = n1 + n2
+//     console.log(n1, n2, n3)
+//     n3 = n3.toString();
+//     let currentNode = new ListNode();
+//     currentNode.val = parseInt(n3[n3.length - 1]);
+//     let firstNode = currentNode;
+//     for (let i = n3.length - 2; i >= 0; i--) {
+//         currentNode.next = new ListNode();
+//         currentNode.next.val = parseInt(n3[i]);
+//         currentNode = currentNode.next;
+//     }
+//     return firstNode;
+}
+
 var addTwoNumbers = function (l1, l2) {
     let currentNode;
     let carry = 0;
