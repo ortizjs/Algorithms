@@ -32,7 +32,6 @@
 // }
 const ada = function (year) {
     let date = new Date("October 1, " + year).getUTCDay();
-
     let day = 0;
     let count = 0;
     while (count < 2) {

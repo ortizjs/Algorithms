@@ -1,5 +1,5 @@
 var setZeroes = function (matrix) {
-    let h = matrix.length
+    let h = matrix.length;
     let w = matrix[0].length;
     let rowZeros = new Array(h);
     let colZeros = new Array(w);
