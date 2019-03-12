@@ -43,28 +43,58 @@
 //    2) 0 <= tree[i] < tree.length
 
 
+// var totalFruit = function (tree) {
+//     // if (tree.length <= 1) return 1;
+//     let max = 0;
+//     let b1 = [];
+//     let b2 = [];
+//     for (let i = 0; i < tree.length; i++) {
+//         for (let j = i; j < tree.length; j++) {
+//             let char = tree[j];
+//             if (b1.length === 0 || b1[0] === char) {
+//                 b1.push(char);
+//             } else if (b2.length === 0 || b2[0] === char) {
+//                 b2.push(char)
+//             } else {
+//                 break;
+//             }
+//         }
+//         if (b1.length + b2.length > max) max = (b1.length + b2.length);
+//         b1 = [];
+//         b2 = [];
+//         // i++;
+//         if (tree[i + 1] === tree[i]) {
+//             continue;
+//         }
+//     }
+//     return max;
+// };
 var totalFruit = function (tree) {
-    // if (tree.length <= 1) return 1;
+    let type1;
+    let type2;
+    let count1 = 0;
+    let count2 = 0;
+    let cont = 0;
     let max = 0;
-    let b1 = [];
-    let b2 = [];
     for (let i = 0; i < tree.length; i++) {
-        for (let j = i; j < tree.length; j++) {
-            let char = tree[j];
-            if (b1.length === 0 || b1[0] === char) {
-                b1.push(char);
-            } else if (b2.length === 0 || b2[0] === char) {
-                b2.push(char)
-            } else {
-                break;
-            }
+        let ele = tree[i];
+        if (type1 === undefined || ele === type1) {
+            type1 = ele;
+            count1 += 1;
+        } else if (type2 === undefined || ele === type2) {
+            type2 = ele;
+            count2 += 1;
+        } else {
+            type1 = tree[i - 1];
+            count1 = cont;
+            type2 = ele;
+            count2 = 1;
         }
-        if (b1.length + b2.length > max) max = (b1.length + b2.length);
-        b1 = [];
-        b2 = [];
-        // i++;
-        if (tree[i + 1] === tree[i]) {
-            continue;
+        if ((count1 + count2) > max) max = count1 + count2;
+        if (ele === tree[i - 1]) {
+            cont++;
+        } else {
+            cont = 1;
         }
     }
     return max;
