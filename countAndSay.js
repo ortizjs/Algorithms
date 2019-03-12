@@ -23,6 +23,27 @@
 
 // Input: 4
 // Output: "1211"
-var countAndSay = function (n) {
-
+var countAndSay = function(n) {
+  let result = "";
+  let counter = 0;
+  let prev = "1";
+    let i = 2;
+    while (i <= n) {
+      let result = ""
+      for (let k = 0; k < prev.length; k++){
+        let char = prev[k];
+        counter += 1;
+        if (char !== prev[k + 1]){
+          result += counter;
+          result += prev[k];
+          counter = 0;
+        }
+      }
+      i++;
+      prev = result;
+    }
+  return prev;
 };
+// countAndSay(1);
+// countAndSay(2);
+countAndSay(4)
