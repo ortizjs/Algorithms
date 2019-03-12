@@ -1,0 +1,3 @@
+let permutations = function(array){
+    
+}
