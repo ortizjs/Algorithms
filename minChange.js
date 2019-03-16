@@ -1,26 +1,25 @@
-const minChange = function (coins, target) {
-    // coins = coins.sort((a,b) => b-a);
-    let s = new Set(coins);
-    let counter = 2;
+var minChange = function(coins, amount) {
+    if (amount === 0) return 0;
+    if (coins.length === 1 && amount === coins[0]) return amount;
+    if (coins.includes(amount)) return 1;
+    let cointSet = new Set(coins);
+    let count = 2;
     let currentSum;
-    while (true) {
+    while(true){
         let newSet = new Set();
         for (let i = 0; i < coins.length; i++) {
             let c = coins[i];
-            for (let coin of s) {
-                currentSum = c + coin;
-                if (currentSum === target) return counter
-                if (currentSum < target) {
-                    newSet.add(currentSum)
-                }
-                // console.log(newSet)
+            for (let coin of cointSet){
+                currentSum = coin + c;
+                if (currentSum === amount) return count; 
+                if (currentSum < amount) newSet.add(currentSum);
             }
         }
-        counter += 1;
-        s = newSet;
-        if (newSet.size === 0) return false;
+        count += 1;
+        cointSet = newSet;
+        if (newSet.size === 0) return -1;
     }
-}
+};
 
 // minChange([1,2,5], 11) // 3 because 5 + 5 + 1 = 11
 // minChange([1,4,5], 8)  // 2 because 4 + 4 = 8
