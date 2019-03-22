@@ -8,3 +8,4 @@ var transpose = function (A) {
     }
     return result;
 };
+
