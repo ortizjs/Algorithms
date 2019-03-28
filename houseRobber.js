@@ -32,3 +32,5 @@ var rob = function (nums) {
     }
     return newArr[newArr.length - 1];
 };
+
+//Comment
